@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import { ListContact } from "./components";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="py-5 max-w-7xl w-full mx-auto">
+			<h3 className="text-3xl font-semibold font-sans leading-relaxed">Contacts Application</h3>
+			<hr />
+			<ListContact />
+		</div>
+	);
 }
 
 export default App;
