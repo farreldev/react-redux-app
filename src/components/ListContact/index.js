@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getListContact } from "../../actions/ActionContact";
+import { getListContact } from "../../store/actions/ActionContact";
 
 function ListContact() {
 	const disp = useDispatch();
