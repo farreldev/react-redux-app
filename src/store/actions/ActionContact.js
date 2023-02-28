@@ -15,7 +15,7 @@ export const getListContact = () => {
 		// Get API
 		axios({
 			method: "GET",
-			url: "http://localhost:9090/kontaks",
+			url: "http://localhost:3000/kontaks",
 			timeout: 120000,
 		})
 			.then((response) => {
@@ -32,7 +32,7 @@ export const getListContact = () => {
 			})
 			.catch((error) => {
 				// Unsuccess Get API
-				console.log("3. Gagal dapet data: ", error);
+				console.log("3. Gagal dapet data: ", error.message);
 				dispatch({
 					type: GET_LIST_CONTACT,
 					payload: {
