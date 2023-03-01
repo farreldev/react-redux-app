@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListContact } from "../../store/actions/ActionContact";
 
 function ListContact() {
-	const { getListContactResult, getListContactLoading, getListContactError } = useSelector((state) => state.KontakReducer);
+	const { getListContactResult, getListContactLoading, getListContactError } = useSelector((state) => state.DataKontak);
 	const disp = useDispatch();
 	useEffect(() => {
 		// Call GET_LIST_CONTACT

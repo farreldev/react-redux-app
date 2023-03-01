@@ -5,7 +5,7 @@ const initialState = {
 	getListContactError: false,
 };
 
-const Kontak = (state = initialState, action) => {
+const DataKontak = (state = initialState, action) => {
 	switch (action.type) {
 		case GET_LIST_CONTACT:
 			console.log("4. Masuk Reducer", action);
@@ -15,4 +15,4 @@ const Kontak = (state = initialState, action) => {
 	}
 };
 
-export default Kontak;
+export { DataKontak };
