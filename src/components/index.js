@@ -1,2 +1,3 @@
 import ListContact from "./ListContact";
-export { ListContact };
+import FormContact from "./FormContact";
+export { ListContact, FormContact };

@@ -12,7 +12,7 @@ function ListContact() {
 	}, [disp]);
 	return (
 		<div>
-			<h4>Contact List</h4>
+			<h4 className="mb-3 font-bold">Contact List</h4>
 			{getListContactResult
 				? getListContactResult.map((kontak) => {
 						return (
