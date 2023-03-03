@@ -2,7 +2,7 @@ import axios from "axios";
 export const GET_LIST_CONTACT = "GET_LIST_CONTACT";
 export const ADD_CONTACT = "ADD_CONTACT";
 
-export const getListContact = (dispatch) => {
+export const getListContact = () => {
 	return (dispatch) => {
 		// Loading
 		dispatch({
@@ -44,7 +44,7 @@ export const getListContact = (dispatch) => {
 	};
 };
 
-export const addContact = (dispatch, data) => {
+export const addContact = (data) => {
 	console.log("2. Masuk Action");
 	return (dispatch) => {
 		// Loading
@@ -64,7 +64,7 @@ export const addContact = (dispatch, data) => {
 			data: data,
 		})
 			.then((response) => {
-				console.log("3. Berhasil input data: ", response);
+				console.log("3. Berhasil input data: ", response.data);
 				// Success Get API
 				dispatch({
 					type: ADD_CONTACT,

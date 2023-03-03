@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact, getListContact } from "../../store/actions/ActionContact";
 
 function FormContact() {
 	const [nama, setNama] = useState("");
 	const [nohp, setNohp] = useState("");
+	const { addContactResult } = useSelector((state) => state.DataKontak);
+	const dispatch = useDispatch();
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log({ nama, nohp });
-		// addContact(dispatch, { nama, nohp });
+		console.log({ nama: nama, nohp: nohp });
+		if (nama && nohp) {
+			dispatch(addContact({ nama, nohp }));
+			setNama("");
+			setNohp("");
+		}
 	};
+	useEffect(() => {
+		if (addContactResult) {
+			return dispatch(getListContact());
+		}
+	}, [addContactResult, dispatch]);
 	return (
 		<div className="border-b py-3 mb-3">
 			<h4 className="mb-3 font-bold">Add Contact</h4>
-			<form onSubmit={(event) => handleSubmit(event)}>
+			<form onSubmit={handleSubmit}>
 				<div className="flex flex-col space-y-1">
 					<div className="flex items-center space-x-3">
 						<label htmlFor="nama" className="max-w-[90px] w-full">

@@ -7,23 +7,34 @@ function ListContact() {
 	const disp = useDispatch();
 	useEffect(() => {
 		// Call GET_LIST_CONTACT
-		console.log("1. useEffect component did mount");
 		disp(getListContact());
 	}, [disp]);
 	return (
 		<div>
 			<h4 className="mb-3 font-bold">Contact List</h4>
-			{getListContactResult
-				? getListContactResult.map((kontak) => {
-						return (
-							<p key={kontak.id}>
-								{kontak.nama} - {kontak.nohp}
-							</p>
-						);
-				  })
-				: getListContactLoading
-				? "<p>Loading data...</p>"
-				: `<p>${getListContactError ? getListContactError : "Data Kosong!"}</p>`}
+			<table className="border max-w-lg w-full">
+				<thead className="bg-gray-200">
+					<tr>
+						<th className="p-3">Nama</th>
+						<th className="p-3">No. Hp</th>
+					</tr>
+				</thead>
+				<tbody>
+					{getListContactResult
+						? getListContactResult.map((kontak) => {
+								return (
+									<tr key={kontak.id} className="border-t">
+										<td className="p-2 border-r">{kontak.nama}</td>
+										<td className="p-2">{kontak.nohp}</td>
+									</tr>
+								);
+						  })
+						: getListContactLoading
+						? "<tr><td colspan=2>Loading data...</td></tr>"
+						: `<tr>${getListContactError ? getListContactError : "<td colspan=2>Data Kosong!</td>"}</tr>`}
+				</tbody>
+				<tfoot></tfoot>
+			</table>
 		</div>
 	);
 }
