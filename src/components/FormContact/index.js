@@ -19,6 +19,7 @@ function FormContact() {
 	};
 	useEffect(() => {
 		if (addContactResult) {
+			console.log("5. Component did update");
 			return dispatch(getListContact());
 		}
 	}, [addContactResult, dispatch]);
