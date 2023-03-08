@@ -2,6 +2,8 @@ import axios from "axios";
 export const GET_LIST_CONTACT = "GET_LIST_CONTACT";
 export const ADD_CONTACT = "ADD_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
+export const EDIT_CONTACT = "EDIT_CONTACT";
+export const UPDATE_CONTACT = "UPDATE_CONTACT";
 
 export const getListContact = () => {
 	return (dispatch) => {
@@ -123,6 +125,58 @@ export const deleteContact = (id) => {
 				console.log("3. Gagal input data: ", error.message);
 				dispatch({
 					type: DELETE_CONTACT,
+					payload: {
+						loading: false,
+						data: false,
+						errorMessage: error.message,
+					},
+				});
+			});
+	};
+};
+
+export const editContact = (data) => {
+	return (dispatch) => {
+		dispatch({
+			type: EDIT_CONTACT,
+			payload: { data },
+		});
+	};
+};
+
+export const updateContact = (data) => {
+	return (dispatch) => {
+		// Loading
+		dispatch({
+			type: UPDATE_CONTACT,
+			payload: {
+				loading: true,
+				data: false,
+				errorMessage: false,
+			},
+		});
+		// Get API
+		axios({
+			method: "PUT",
+			url: `http://localhost:3000/kontaks/${data.id}`,
+			timeout: 120000,
+			data: data,
+		})
+			.then((response) => {
+				// Success Get API
+				dispatch({
+					type: UPDATE_CONTACT,
+					payload: {
+						loading: false,
+						data: response.data,
+						errorMessage: false,
+					},
+				});
+			})
+			.catch((error) => {
+				// Unsuccess Get API
+				dispatch({
+					type: UPDATE_CONTACT,
 					payload: {
 						loading: false,
 						data: false,
