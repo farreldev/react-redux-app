@@ -20,7 +20,7 @@ function ListContact() {
 	return (
 		<div>
 			<h4 className="mb-3 font-bold">Contact List</h4>
-			<div className="border max-w-2xl w-full">
+			<div className="border w-full">
 				<div className="bg-gray-200">
 					<div className="grid grid-cols-3 text-center">
 						<div className="p-3">Nama</div>
@@ -34,7 +34,7 @@ function ListContact() {
 								return (
 									<div key={kontak.id} className="grid grid-cols-3 border-t">
 										<div className="p-2 border-r flex-1">{kontak.nama}</div>
-										<div className="p-2 border-r flex-1">{kontak.nohp}</div>
+										<div className="p-2 border-r flex-1 text-right">{kontak.nohp}</div>
 										<div className="p-2 text-center flex-1">
 											<div className="flex space-x-2 justify-center">
 												<button onClick={() => disp(deleteContact(kontak.id))} className="py-1 px-3 bg-red-500 text-white rounded">
